@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+	<head>   
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    	<meta name="viewport" content="width=device-width, initial-scale=1"> 		    
+		<title>jQuery Mobile Application</title>
+		<!--
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+    	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.1.min.css" />
+		<script type="text/javascript" charset="utf-8" src="js/jquery-1.10.2.min.js"></script>
+    	<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.4.1.min.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		-->
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+    	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.0a4.1.min.css" />
+		<script type="text/javascript" charset="utf-8" src="js/jquery-1.5.2.min.js"></script>
+    	<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.0a4.1.min.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<!--
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+    	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />
+    	<script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+    	<script src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>  
+		<script src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/contacts_html5.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		-->
+
+		<script type="text/javascript">  
+		$(document).ready(function(){  
+			alert('Hi,I am a alert!');     
+		});  
+		</script>
+	</head> 
+	<body>
+		<section id="page1" data-role="page" data-fullscreen="false">
+			<header data-role="header" data-position="fixed">
+				<h1>jQuery Mobile</h1>
+				<nav data-role="navbar">
+					<ul>
+						<li><a href="#first" class="ui-btn-active">First</a></li>
+						<li><a href="#second">Second</a></li>
+						<li><a href="#thrid">Third</a></li>
+						<li><a href="#four">Fourth</a></li>						
+						<li><a href="#five">Fifth</a></li>
+						<li><a href="#six">Sixth</a></li>					
+					</ul>
+				</nav>
+			</header>
+			<div class="content" data-role="content">
+				<h3>Buttons</h3>
+				<a href="#" data-role="button" onclick="window.location='index1.html'">local storage</a>
+				<input type="submit" value="html5db" data-inline="true" onclick="window.location='html5db.html'">
+				<input type="reset" value="jqgrid" data-inline="true" onclick="window.location='jqgridtest.html'">				
+				<!-- 
+				<a href="#" data-role="button" onclick="navigator.app.loadUrl('file:///android_asset/www/index.html');">local storage</a>
+				<input type="submit" value="html5db" data-inline="true" onclick="navigator.app.loadUrl('file:///android_asset/www/html5db.html');">
+				<input type="reset" value="jqgrid" data-inline="true" onclick="navigator.app.loadUrl('file:///jqgridtest.html/www/index.html');">				
+				<a href="#" data-role="button" onclick="window.location.href='index1.html'">local storage</a>
+				<input type="submit" value="html5db" data-inline="true" onclick="window.location.href='html5db.html'">
+				<input type="reset" value="jqgrid" data-inline="true" onclick="window.location.href='jqgridtest.html'">
+				-->
+			</div>
+			<h3>Control Group Buttons</h3>
+			<div data-role="controlgroup">
+				<a href="#" data-role="button">Yes</a>
+				<a href="#" data-role="button">No</a>
+				<a href="#" data-role="button">Cancel</a>
+			</div>
+			<div data-role="controlgroup" data-type="horizontal">
+				<a href="#" data-role="button">Yes</a>
+				<a href="#" data-role="button">No</a>
+				<a href="#" data-role="button">Cancel</a>
+			</div>
+			<h3>Button Icons</h3>
+			<div data-role="controlgroup" data-type="horizontal" data-inline="true">
+				<a href="#" data-role="button" data-icon="home" data-iconpos="left">Home</a>
+				<a href="#" data-role="button" data-icon="gear" data-iconpos="left">Configure</a>
+				<a href="#" data-role="button" data-icon="search" data-iconpos="left">Search</a>
+
+			</div>		
+			<footer data-role="footer" data-position="fixed">
+				<h3>O'Reilly</h3>
+			</footer>
+		</section>
+		<div data-role="page" id="first">       
+			<header data-role="header">         
+				<h1>jQuery Mobile Demo</h1>     
+			</header>       
+			<div data-role="content">
+				<p><a href="#dialogpage" data-rel="dialog">A Dialog (dialog)</a></p>          
+				<ul data-role="listview" data-inset="true">             
+					<li><a href="#page1">回到首页</a></li>             
+					<li><a href="#page1">回到首页</a></li>             
+					<li><a href="#page1]">回到首页</a></li>         
+				</ul>     
+			</div>       
+			<footer data-role="footer">         
+				<h2>Footer</h2>     
+			</footer>   
+		</div> 
+		<div data-role="page" id="second">       
+			<header data-role="header">         
+				<h1>jQuery Mobile Demo</h1>     
+			</header>       
+			<div data-role="content">         
+				<div data-role="fieldcontain">     
+					<label for="text">文本输入框</label>     
+					<input type="text" name="text" id="text" value="text" />
+					<label for="textarea">文本输入域</label>     
+					<textarea cols="40" rows="8" name="textarea" id="textarea">textarea</textarea>
+   					<label for="search">搜索输入框</label>     
+   					<input type="search" name="search" id="search" value="search" />
+ 					<fieldset data-role="controlgroup">         
+ 						<legend>单选框:</legend>         
+ 						<input type="radio" name="radio-choice-1" id="radio-choice-1" value="choice-1" />         
+ 						<label for="radio-choice-1">蓝</label>         
+ 						<input type="radio" name="radio-choice-1" id="radio-choice-2" value="choice-2" />         
+ 						<label for="radio-choice-2">绿</label>         
+ 						<input type="radio" name="radio-choice-1" id="radio-choice-3" value="choice-3" />         
+ 						<label for="radio-choice-3">黑</label>     
+ 					</fieldset>
+ 					<fieldset data-role="controlgroup">         
+ 						<legend>复选框</legend>          
+ 						<input type="checkbox" name="blue" id="effect1" class="custom" />          
+ 						<label for="effect1">效果1</label>         
+ 						<input type="checkbox" name="green" id="effect2" class="custom" />         
+ 						<label for="effect2">效果2</label>         
+ 						<input type="checkbox" name="pink" id="effect3" class="custom"  />         
+ 						<label for="effect3">效果3</label>     
+ 					</fieldset>					 					   					 					  
+				</div>
+				<div data-role="fieldcontain">
+    				<label for="select-choice-2" class="select">多项选择列表</label>
+    				<select data-native-menu="false" multiple="multiple" name="select-choice-2" id="select-choice-2">
+        				<option value="12h">12小时</option>
+        				<option value="1d">一天</option>
+        				<option value="2d">两天</option>
+        				<option value="week">一周</option>
+    				</select>
+				</div>				
+			</div>       
+			<footer data-role="footer">         
+				<h2>Footer</h2>     
+			</footer>   
+		</div>
+		<div data-role="page" id="thrid">  
+			<div data-role="header">  
+        		<h1>Grid Test</h1>  
+    		</div>  
+    		<div data-role="content">  
+        		<div class="ui-grid-a">  
+            		<div class="ui-block-a">  
+            			<p>  测试            </p>  
+            		</div>  
+            		<div class="ui-block-b">  
+            			<p> 巩固完善基本药物制度和基层运行新机制是“十二五”期间深化医药卫生体制改革的重点，是实现2020年人人享有基本医疗卫生服务目标的重要基础。医改实施三年多来，基层医疗卫生机构综合改革全面推进，初步建立了基本药物制度，构建了维护公益性、调动积极性、保障可持续的基层运行新机制。为进一步深化改革，扩大医改成果，现就巩固完善基本药物制度和基层运行新机制提出如下意见。            
+            			</p>  
+            		</div>  
+        		</div>  
+    		</div>  
+		</div>
+		<div data-role="page" id="dialogpage">  
+    		<div data-role="header">  
+        		<h1>The Dialog</h1>  
+   			</div>  
+    		<div data-role="content">  
+        		<p>  This is the Dialog  </p>  
+    		</div>  
+		</div>
+		<div data-role="page" id="four">  
+    		<div data-role="header">  
+        		<h1>Collapsible Test</h1>  
+    		</div>  
+    		<div data-role="content">  
+        		<div data-role="collapsible">  
+            		<h3>First</h3>  
+            		<p>  Hello World...  </p>  
+        		</div>  
+        		<div data-role="collapsible">  
+            		<h3>First</h3>  
+            		<p>  
+                		Hello World...  
+            		</p>  
+        		</div>  
+        		<div data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">  
+            		<h3>First</h3>  
+            		<p>  
+                Hello World...  
+            		</p>  
+        		</div>  
+        		<div data-role="collapsible" data-content-theme="c" data-iconpos="right">  
+            		<h3>First</h3>  
+            		<p>  
+                Hello World again...  
+            		</p>  
+        		</div>  
+    		</div>  
+		</div>
+		<div data-role="page" id="five">  
+			<div data-role="header">  
+        		<h1>動畫 Demo</h1>  
+    		</div>  
+    		<div data-role="content">  
+ 				<div class="spring">
+    				<p>動畫 Demo</p>
+    				<span class="button">Click Me!</span>
+				</div>       		 
+    		</div>
+ 			<footer data-role="footer">         
+				<h2>Footer</h2>     
+			</footer>      		  
+		</div>
+		<div data-role="page" id="six">  
+			<div data-role="header">  
+        		<h1>Add Item To List</h1>  
+    		</div>  
+    		<div data-role="content">  
+		        <div id="items">
+        		</div>
+       	 		<input type="text" id="item" />
+        		<input type="button" value="Add item to list" onclick="appendToList()"/>
+    		</div>
+ 			<footer data-role="footer">         
+				<h2>Footer</h2>     
+			</footer>      		  
+		</div>
+		 				
+	</body>
+</html>	

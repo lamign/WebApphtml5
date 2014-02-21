@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>HTML5 sample for Google Chrome4 - Web SQL Database</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <style type="text/css">
+        #errorMsg { color: Red; }
+        div { margin: 8px; }
+    </style>
+</head>
+<body>
+<h1> Web SQL Database 範例</h1>
+<fieldset>
+    <legend>第一步：建立資料庫</legend>
+    <input type="button" value="建立本地資料庫" id="create" onclick="create();" />
+    <div id="createLog"></div>    
+</fieldset>
+<fieldset>
+    <legend>第二步：插入資料</legend>
+    <input type="text" id="txtData" value="some data.." />    
+    <input type="button" value="插入到本地資料庫" id="insert" onclick="insert();"/>
+    <div id="insertLog"></div>
+</fieldset>
+<fieldset>
+    <legend>第三步：顯示已插入的所有資料</legend>
+    <input type="button" value="顯示所有資料" id="show" onclick="show();"/>
+    <div id="showLog"></div>
+</fieldset>
+<br />
+
+<script type="text/javascript">
+/*
+var version = null;
+$.get(chrome.extension.getURL('manifest.json'), function(info){
+    version = info.version;
+}, 'json');
+alert("Version = " + version);
+*/
+
+	getVersion();
+	function getVersion() {
+		var nVer = navigator.appVersion;
+		var navigatorAgent = navigator.userAgent;
+		var browserName  = navigator.appName;
+		var fullVersion  = ''+parseFloat(navigator.appVersion);
+		var majorVersion = parseInt(navigator.appVersion,10);
+		var nameShift,versionShift,trimSemicolon;
+		 
+		if ((versionShift = navigatorAgent.indexOf("Opera")) != -1) {
+		    browserName = "Opera";
+		    fullVersion = navigatorAgent.substring(versionShift + 6);
+		    if ((versionShift = navigatorAgent.indexOf("Version")) != -1)
+		    fullVersion = navigatorAgent.substring(versionShift + 8);
+		}
+		else if ((versionShift = navigatorAgent.indexOf("MSIE")) != -1) {
+		    browserName = "Microsoft Internet Explorer";
+		    fullVersion = navigatorAgent.substring(versionShift + 5);
+		}
+		else if ((versionShift = navigatorAgent.indexOf("Sleipnir")) != -1) {
+		    browserName = "Sleipnir";
+		    fullVersion = navigatorAgent.substring(versionShift + 9);
+		}
+		else if ((versionShift = navigatorAgent.indexOf("Chrome")) != -1) {
+		    browserName = "Chrome";
+		    fullVersion = navigatorAgent.substring(versionShift + 7);
+		}
+		else if ((versionShift = navigatorAgent.indexOf("Safari")) != -1) {
+		    browserName = "Safari";
+		    fullVersion = navigatorAgent.substring(versionShift + 7);
+		    if ((versionShift = navigatorAgent.indexOf("Version")) != -1)
+		    fullVersion = navigatorAgent.substring(versionShift + 8);
+		}
+		else if ((versionShift = navigatorAgent.indexOf("Firefox")) != -1) {
+		    browserName = "Firefox";
+		    fullVersion = navigatorAgent.substring(versionShift + 8);
+		}
+		// 多數瀏覽器中，“名稱/版本”是在 userAgent 的結尾
+		else if ((nameShift = navigatorAgent.lastIndexOf(' ') + 1) <
+		    (versionShift = navigatorAgent.lastIndexOf('/'))) {
+		    browserName = navigatorAgent.substring(nameShift, versionShift);
+		    fullVersion = navigatorAgent.substring(versionShift + 1);
+		    if (browserName.toLowerCase() == browserName.toUpperCase()) {
+		        browserName = navigator.appName;
+		    }
+		}
+		// 如果分號存在修剪分號
+		if ((trimSemicolon = fullVersion.indexOf(";")) != -1)
+		    fullVersion = fullVersion.substring(0, trimSemicolon);
+		if ((trimSemicolon = fullVersion.indexOf(" ")) != -1)
+		    fullVersion = fullVersion.substring(0, trimSemicolon);
+		    majorVersion = parseInt('' + fullVersion, 10);
+		if (isNaN(majorVersion)) {
+		    fullVersion = '' + parseFloat(navigator.appVersion);
+		    majorVersion = parseInt(navigator.appVersion, 10);
+		}
+		document.write("<ul>")
+		document.write("<li>Browser name  = " + browserName + "</li>");
+		document.write("<li>Full version  = " + fullVersion + "</li>");
+		document.write("<li>Major version = " + majorVersion + "</li>");
+		document.write("<li>navigator.appName = " + navigator.appName + "</li>");
+		document.write("</ul>")
+		document.write("<h3>navigator.userAgent</h3>")
+		document.write("<p>" + navigator.userAgent + "</p>");
+	}
+
+    function clearLog(id) {
+        var log = document.getElementById(id);
+        log.innerHTML = '';
+    }
+    function showLog(id, msg) {
+        var log = document.getElementById(id);
+        var data = log.innerHTML;
+        log.innerHTML = data + msg + '<br/>';
+    }
+
+    function create() {
+    	//showLog('createLog', '資料庫建立中...');
+        prepareDatabase();
+    }
+
+
+    function prepareDatabase() {
+
+        try { //alert('go...');
+        	  showLog('createLog', !window.openDatabase);
+        	  
+			//navigator.openDatabase = window.openDatabase = DroidDB_openDatabase; 
+			//window.droiddb = new DroidDB();
+			
+			/*
+			window.webkitStorageInfo.requestQuota(window.PERSISTENT, 1024 * 1024 * 280 ,  
+			  function (grantedBytes) { 
+				console.log('Granted ' + grantedBytes + ' bytes in persistent storage');
+			}, function (e) { 
+				console.log('Error', e); 
+			});
+			*/
+			/*
+			navigator.webkitPersistentStorage.requestQuota(1024 * 1024 * 280 ,  
+			  function (grantedBytes) { 
+				window.requestFileSystem (PERSISTENT, grantedBytes, onInitFs, errorHandler); 
+			}, function (e) { 
+			  console.log('Error', e); 
+			});
+			*/
+			 
+            window._db = window.openDatabase('test', '1.0', "testDatabase", 100 * 1024);
+			//alert(window._db);
+			showLog('createLog', 'dkkdkkd' + window._db);
+            if (window._db != null) {
+                window._db.transaction(function(tran) {
+                tran.executeSql('create table if not exists datalist (id INTEGER PRIMARY KEY , name VARCHAR(50))', null,
+                            function() { showLog('createLog','資料庫已建立.') },
+                            function(tx, err) { showLog('createLog', '無法建立資料庫!') });
+                });
+            } else { showLog('createLog', '無法存取資料庫.') } 
+        } catch (ex) {
+            //alert(ex.message);
+            showLog('createLog', ex.message)
+        }
+    }
+
+    function insert() {
+        if (!window._db){
+            alert('請先建立資料庫！');
+            return;
+        }
+        try {
+              window._db.transaction(function(tran) {
+                    tran.executeSql('INSERT INTO datalist (name) VALUES (?)',
+                    [document.getElementById('txtData').value],
+                    function(tx, resultSet) { showLog('insertLog','資料已插入！ 影響的資料列數=' + resultSet.rowsAffected); },
+                    function(tx, err) { showLog('insertLog', err.message) });
+                });
+        } catch (ex) {
+            alert(ex.message);
+        }
+    }
+    
+    function show(){
+        if (!window._db){
+            alert('請先建立資料庫！');
+            return;
+        }
+        window._db.readTransaction(function(t) {
+            t.executeSql('SELECT * FROM datalist', [], function(t, r) {
+                clearLog('showLog');
+                showLog('showLog', '列數=' + r.rows.length);
+                showLog('showLog', '取出本地資料庫中所有資料...');
+                for (var i = 0, c = r.rows.length; i < c; i++) {
+                    showLog('showLog', 'rows ' + i + ' id= ' + r.rows.item(i).id + ', name=' + r.rows.item(i).name);
+                }
+
+            }, function(t, e) {
+                // couldn't read database
+                showLog('showLog', e.message);
+            });
+        });    
+    }
+
+</script>
+
+</body>
+</html>
